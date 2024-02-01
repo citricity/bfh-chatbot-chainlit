@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  chainlit:
+    user: root
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - "5001:80"
