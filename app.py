@@ -374,7 +374,7 @@ def header_auth_callback(headers: dict) -> Optional[cl.User]:
             adminRoleKey = 'http://purl.imsglobal.org/vocab/lis/v2/institution/person#Administrator'
             isAdmin = adminRoleKey in payload.platformContext.roles
             role = 'admin' if isAdmin else 'student'
-            return cl.User(identifier=payload.user, metadata={"role": role, "provider": "header"})
+            return cl.User(identifier=payload.user, metadata={"role": role, "provider": "header", "platform-id": payload.platformId, "courseid": payload.platformContext.context.id})
         except:
             logging.error("JWT decode failed")
             return None

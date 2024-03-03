@@ -7,6 +7,7 @@ COPY ./requirements.txt /usr/app
 COPY ./rs256.rsa.pub /usr/app
 COPY ./chainlit.md /usr/app
 
+RUN mkdir -p /var/log/lancedb
 RUN pip install -r requirements.txt
 RUN chainlit init
 RUN sed -i "s/multi_modal = .*/multi_modal = false/" /usr/app/.chainlit/config.toml
